@@ -40,7 +40,61 @@ class MyHomePage extends StatelessWidget {
       body: Center(
         // Center is a layout widget. It takes a single child and positions it
         // in the middle of the parent.
-        child: Text("Hello world."),
+        child: Column(
+          children: <Widget>[
+            Padding(
+              padding: const EdgeInsets.only(top: 80, bottom: 150),
+              child: Container(
+                width: 300,
+                child: Image.network(
+                    "https://www.mainsysgroup.com/sites/default/files/MAINSYS2017.png"),
+              ),
+            ),
+            Card(
+              margin: EdgeInsets.symmetric(horizontal: 64),
+              elevation: 10,
+              child: Column(
+                children: <Widget>[
+                  Padding(
+                      padding: const EdgeInsets.all(16),
+                      child: Container(
+                        child: TextField(
+                          decoration: InputDecoration(
+                            hintText: "Email",
+                          ),
+                        ),
+                      )),
+                  Padding(
+                      padding: const EdgeInsets.all(16),
+                      child: Container(
+                        child: TextField(
+                          decoration: InputDecoration(
+                            hintText: "Password",
+                          ),
+                        ),
+                      )),
+                  Padding(
+                    padding: EdgeInsets.all(16),
+                    child: RaisedButton(
+                      onPressed: () {},
+                      child: Text("Login"),
+                    ),
+                  )
+                ],
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(32),
+              child: FlatButton(
+                onPressed: () {},
+                child: Text(
+                  "Forgot my password",
+                  style: TextStyle(color: Colors.blue),
+                ),
+              ),
+            )
+          ],
+        ),
       ),
     );
   }
