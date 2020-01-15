@@ -37,63 +37,108 @@ class MyHomePage extends StatelessWidget {
     // fast, so that you can just rebuild anything that needs updating rather
     // than having to individually change instances of widgets.
     return Scaffold(
-      body: Center(
-        // Center is a layout widget. It takes a single child and positions it
-        // in the middle of the parent.
-        child: Column(
-          children: <Widget>[
-            Padding(
-              padding: const EdgeInsets.only(top: 80, bottom: 150),
-              child: Container(
-                width: 300,
-                child: Image.network(
-                    "https://www.mainsysgroup.com/sites/default/files/MAINSYS2017.png"),
+      body: SingleChildScrollView(
+        child: Center(
+          // Center is a layout widget. It takes a single child and positions it
+          // in the middle of the parent.
+          child: Column(
+            children: <Widget>[
+              Padding(
+                padding: const EdgeInsets.symmetric(vertical: 80),
+                child: Container(
+                    width: 150, child: Image.asset('assets/images/logo.png')),
               ),
-            ),
-            Card(
-              margin: EdgeInsets.symmetric(horizontal: 64),
-              elevation: 10,
-              child: Column(
-                children: <Widget>[
-                  Padding(
-                      padding: const EdgeInsets.all(16),
-                      child: Container(
-                        child: TextField(
-                          decoration: InputDecoration(
-                            hintText: "Email",
+              Card(
+                margin: EdgeInsets.symmetric(horizontal: 64),
+                elevation: 10,
+                child: Column(
+                  children: <Widget>[
+                    Padding(
+                        padding: const EdgeInsets.all(16),
+                        child: Container(
+                          child: TextField(
+                            decoration: InputDecoration(
+                              hintText: "Email",
+                            ),
                           ),
-                        ),
-                      )),
-                  Padding(
-                      padding: const EdgeInsets.all(16),
-                      child: Container(
-                        child: TextField(
-                          decoration: InputDecoration(
-                            hintText: "Password",
+                        )),
+                    Padding(
+                        padding: const EdgeInsets.all(16),
+                        child: Container(
+                          child: TextField(
+                            decoration: InputDecoration(
+                              hintText: "Password",
+                            ),
                           ),
-                        ),
-                      )),
-                  Padding(
-                    padding: EdgeInsets.all(16),
-                    child: RaisedButton(
-                      onPressed: () {},
-                      child: Text("Login"),
-                    ),
-                  )
-                ],
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(32),
-              child: FlatButton(
-                onPressed: () {},
-                child: Text(
-                  "Forgot my password",
-                  style: TextStyle(color: Colors.blue),
+                        )),
+                    Padding(
+                      padding: EdgeInsets.all(16),
+                      child: RaisedButton(
+                        onPressed: () {},
+                        child: Text("Login"),
+                      ),
+                    )
+                  ],
                 ),
               ),
-            )
-          ],
+              Padding(
+                padding: const EdgeInsets.all(32),
+                child: FlatButton(
+                  onPressed: () {
+                    showModalBottomSheet(
+                        context: context,
+                        isScrollControlled: true,
+                        builder: (bCtx) {
+                          return SingleChildScrollView(
+                            child: Container(
+                              padding: EdgeInsets.only(
+                                  bottom:
+                                      MediaQuery.of(context).viewInsets.bottom),
+                              child: Column(
+                                children: <Widget>[
+                                  Padding(
+                                    padding: EdgeInsets.all(16),
+                                    child: Text(
+                                      "Password recovery",
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.bold),
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.all(16),
+                                    child: Text(
+                                        "Type your email on the field below in order to receive instructions on how to recover your password."),
+                                  ),
+                                  Padding(
+                                    padding: EdgeInsets.all(16),
+                                    child: TextField(
+                                      decoration: InputDecoration(
+                                          hintText: "Your email"),
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.all(16),
+                                    child: RaisedButton(
+                                      onPressed: () {
+                                        Navigator.of(context).pop();
+                                      },
+                                      child: Text("Send"),
+                                    ),
+                                  )
+                                ],
+                              ),
+                            ),
+                          );
+                        });
+                  },
+                  child: Text(
+                    "Forgot my password",
+                    style: TextStyle(color: Colors.blue),
+                  ),
+                ),
+              )
+            ],
+          ),
         ),
       ),
     );
