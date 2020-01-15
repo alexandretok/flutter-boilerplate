@@ -57,6 +57,7 @@ class MyHomePage extends StatelessWidget {
                         padding: const EdgeInsets.all(16),
                         child: Container(
                           child: TextField(
+                            keyboardType: TextInputType.emailAddress,
                             decoration: InputDecoration(
                               hintText: "Email",
                             ),
@@ -66,6 +67,7 @@ class MyHomePage extends StatelessWidget {
                         padding: const EdgeInsets.all(16),
                         child: Container(
                           child: TextField(
+                            obscureText: true,
                             decoration: InputDecoration(
                               hintText: "Password",
                             ),
@@ -112,6 +114,7 @@ class MyHomePage extends StatelessWidget {
                                   Padding(
                                     padding: EdgeInsets.all(16),
                                     child: TextField(
+                                      keyboardType: TextInputType.emailAddress,
                                       decoration: InputDecoration(
                                           hintText: "Your email"),
                                     ),
